@@ -29,4 +29,9 @@ export default StyleSheet.create({
     marginLeft: margins.pageHorizontal,
     marginTop: 12,
   },
+  title: {
+    ...textSize.bigSizeText,
+    ...textWeight.bold,
+    marginTop: 20,
+  },
 });

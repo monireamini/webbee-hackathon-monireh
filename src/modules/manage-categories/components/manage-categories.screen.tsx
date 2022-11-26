@@ -23,6 +23,9 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
           onPress={handleNavigateToAddCategory}
           label={'Add New Category'}
         />
+
+        <Text style={styles.title}>Existing Categories:</Text>
+        <Text>You can edit them right here.</Text>
       </View>
     );
   }

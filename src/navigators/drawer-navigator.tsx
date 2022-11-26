@@ -22,6 +22,8 @@ const DrawerNavigator = () => {
         drawerType: dimensions.windowWidth >= 768 ? 'permanent' : 'front',
       }}>
       <Drawer.Screen name="Dashboard" component={Dashboard} />
+
+      {/* dynamic routes */}
       {categories.map((category: categoryInReduxStore) => {
         return (
           <Drawer.Screen
@@ -32,6 +34,7 @@ const DrawerNavigator = () => {
           />
         );
       })}
+
       <Drawer.Screen name="ManageCategories" component={ManageCategories} />
       <Drawer.Screen
         name="CreateCategory"
