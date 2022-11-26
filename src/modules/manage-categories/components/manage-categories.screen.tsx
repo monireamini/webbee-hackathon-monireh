@@ -2,9 +2,9 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import CustomButton from '../../../shared/components/button/button';
 import styles from './manage-categories.screen.styles';
+import Layout from '../../../shared/components/layout/layout';
 import {manageCategoriesPropTypes} from './manage-categories.screen.types';
 
 const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
@@ -15,7 +15,7 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Layout>
       {categories?.length === 0 ? (
         <View style={styles.emptyPlaceholder}>
           <Text style={styles.emptyPlaceholderTitle}>No categories</Text>
@@ -30,7 +30,7 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
       ) : (
         <View />
       )}
-    </SafeAreaView>
+    </Layout>
   );
 };
 
