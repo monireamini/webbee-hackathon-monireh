@@ -25,7 +25,7 @@ export default StyleSheet.create({
     marginBottom: 12,
   },
   submitButtonContainer: {
-    paddingHorizontal: margins.formVertical,
+    paddingLeft: margins.pageHorizontal,
     ...center,
   },
 });

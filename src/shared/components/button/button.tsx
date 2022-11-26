@@ -2,14 +2,14 @@ import React from 'react';
 import {Pressable, Text} from 'react-native';
 import {buttonPropTypes} from './button.types';
 import styles from './button.styles';
-import {colors} from '../../styles/styles';
+import {colors, dimensions, margins} from '../../styles/styles';
 
 const CustomButton = (props: buttonPropTypes) => {
   const {
     onPress,
     label,
     backgroundColor = colors.morningBlue,
-    width = '100%',
+    width = dimensions.windowWidth - 2 * margins.pageHorizontal,
   } = props;
 
   return (
