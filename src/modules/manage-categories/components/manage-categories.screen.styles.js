@@ -8,10 +8,6 @@ import {
 } from '../../../shared/styles/styles';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.champagne,
-  },
   emptyPlaceholder: {
     flex: 1,
     ...center,

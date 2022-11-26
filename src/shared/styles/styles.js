@@ -45,4 +45,5 @@ export const rowCenter = {
 export const margins = {
   pageHorizontal: 20,
   textVertical: 20,
+  formVertical: 20,
 };
