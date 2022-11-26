@@ -11,6 +11,7 @@ const AddedField = (
 ) => {
   function handleRemoveItem() {
     props.arrayHelpers.remove(props.index);
+    // todo: handle resetting title field if user removes it
   }
 
   return (

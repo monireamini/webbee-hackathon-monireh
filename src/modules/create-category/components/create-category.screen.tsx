@@ -111,7 +111,6 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
               </View>
 
               <Separator half />
-
             </ScrollView>
           );
         }}
