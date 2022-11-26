@@ -25,4 +25,8 @@ export default StyleSheet.create({
     color: colors.gunMetal,
     marginBottom: margins.textVertical,
   },
+  addButton: {
+    marginLeft: margins.pageHorizontal,
+    marginTop: 12,
+  },
 });

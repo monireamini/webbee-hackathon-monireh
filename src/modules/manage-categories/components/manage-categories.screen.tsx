@@ -16,6 +16,17 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
     props.navigation.push('CreateCategory');
   }
 
+  function renderAddButton() {
+    return (
+      <View style={styles.addButton}>
+        <CustomButton
+          onPress={handleNavigateToAddCategory}
+          label={'Add New Category'}
+        />
+      </View>
+    );
+  }
+
   function renderCategoryInEditMode({item}: {item: createCategoryFormValues}) {
     return (
       <CategoryInManageMode
@@ -48,6 +59,7 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
           data={categories}
           renderItem={renderCategoryInEditMode}
           keyExtractor={categoryKeyExtractor}
+          ListHeaderComponent={renderAddButton}
         />
       )}
     </Layout>

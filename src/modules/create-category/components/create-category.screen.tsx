@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import {ArrayHelpers, FieldArray, Formik} from 'formik';
+import * as yup from 'yup';
 import Layout from '../../../shared/components/layout/layout';
 import CustomTextInput from '../../../shared/components/text-input/text-input';
 import styles from './create-category.screen.styles';
@@ -14,11 +15,19 @@ import {
   createCategoriesPropTypes,
   createCategoryFormValues,
 } from './create-category.screen.types';
+import validations from '../../../shared/utils/validations';
+import ErrorMessage from '../../../shared/components/error-message/error-message';
 
 const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
   const dispatch = useDispatch();
 
   const initialValues = {title: '', fields: [], titleField: ''}; // todo: get initial values from async storage or redux persist
+
+  const validationSchema = yup.object().shape({
+    title: validations.title,
+    fields: validations.fields,
+    titleField: validations.titleField,
+  });
 
   function handleAddCategory(values: createCategoryFormValues) {
     dispatch(addCategory(values));
@@ -27,8 +36,11 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
 
   return (
     <Layout>
-      <Formik initialValues={initialValues} onSubmit={handleAddCategory}>
-        {({values, setFieldValue, handleSubmit}) => {
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleAddCategory}>
+        {({values, errors, setFieldValue, handleSubmit}) => {
           function setTitle(text: string) {
             setFieldValue('title', text);
           }
@@ -55,11 +67,15 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
                   placeholder={'Category Name'}
                   onChangeText={setTitle}
                 />
+                <ErrorMessage text={errors.title || ''} />
 
                 <Separator />
 
                 {/* fields */}
                 <FieldArray name="fields" render={renderCategoryFields} />
+                <ErrorMessage
+                  text={typeof errors.fields === 'string' ? errors.fields : ''}
+                />
               </ScrollView>
 
               <View style={styles.submitButtonContainer}>

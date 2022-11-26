@@ -8,9 +8,18 @@ import CustomTextInput from '../../../shared/components/text-input/text-input';
 import Separator from '../../../shared/components/form-item-separator/separator';
 import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
+import * as yup from 'yup';
+import validations from '../../../shared/utils/validations';
+import ErrorMessage from '../../../shared/components/error-message/error-message';
 
 const CategoryInManageMode = (props: createCategoryFormValues) => {
   const initialValues = {...props};
+
+  const validationSchema = yup.object().shape({
+    title: validations.title,
+    fields: validations.fields,
+    titleField: validations.titleField,
+  });
 
   function handleUpdateCategory() {
     //
@@ -18,8 +27,11 @@ const CategoryInManageMode = (props: createCategoryFormValues) => {
 
   return (
     <View style={styles.mainContainer}>
-      <Formik initialValues={initialValues} onSubmit={handleUpdateCategory}>
-        {({values, setFieldValue, handleSubmit}) => {
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleUpdateCategory}>
+        {({values, errors, setFieldValue, handleSubmit}) => {
           function setTitle(text: string) {
             setFieldValue('title', text);
           }
@@ -34,7 +46,7 @@ const CategoryInManageMode = (props: createCategoryFormValues) => {
           }
 
           function handleSetTitleField() {
-            //
+            // todo
           }
 
           return (
@@ -46,18 +58,22 @@ const CategoryInManageMode = (props: createCategoryFormValues) => {
                   placeholder={'Category Name'}
                   onChangeText={setTitle}
                 />
+                <ErrorMessage text={errors.title || ''} />
 
                 <Separator />
 
                 {/* fields */}
                 <FieldArray name="fields" render={renderCategoryFields} />
+                <ErrorMessage
+                  text={typeof errors.fields === 'string' ? errors.fields : ''}
+                />
               </ScrollView>
 
               <View style={styles.submitButtonContainer}>
                 <CustomButton
                   onPress={handleSetTitleField}
                   label={`Title Field is: ${values.titleField || ''}`}
-                  backgroundColor={colors.beauBlue}
+                  backgroundColor={colors.gunMetal}
                 />
               </View>
 
@@ -66,7 +82,7 @@ const CategoryInManageMode = (props: createCategoryFormValues) => {
               <View style={styles.submitButtonContainer}>
                 <CustomButton
                   onPress={handleSubmit}
-                  label={'Submit Category'}
+                  label={'Update Category'}
                 />
               </View>
             </>
