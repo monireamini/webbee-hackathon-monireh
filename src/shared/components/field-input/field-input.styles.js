@@ -1,11 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {
-  center,
-  colors,
-  dimensions,
-  margins,
-  textWeight,
-} from '../../styles/styles';
+import {center, colors, margins, textWeight} from '../../styles/styles';
 
 export default StyleSheet.create({
   mainRow: {

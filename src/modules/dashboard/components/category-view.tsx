@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
 import styles from './category-view.styles';
 import CustomButton from '../../../shared/components/button/button';
-import {colors, dimensions} from '../../../shared/styles/styles';
+import {colors} from '../../../shared/styles/styles';
 import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import MachineInManageMode from './machine-in-manage-mode';
 

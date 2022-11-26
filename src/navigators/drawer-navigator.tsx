@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 import {categoryInReduxStore} from '../modules/create-category/components/create-category.screen.types';
 import FilteredCategory from '../modules/filtered-category/filtered-category.screen';
 import {reduxStore} from '../shared/ts-interfaces/shared.types';
-import {dimensions} from '../shared/styles/styles';
 import Dashboard from '../modules/dashboard/components/dashboard.screen';
 import ManageCategories from '../modules/manage-categories/components/manage-categories.screen';
 import CreateCategory from '../modules/create-category/components/create-category.screen';
