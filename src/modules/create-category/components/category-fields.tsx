@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import FieldInput from '../../../shared/components/field-input/field-input';
 import Separator from '../../../shared/components/form-item-separator/separator';
 import {categoryFieldsPropTypes} from './category-fields.types';
@@ -11,8 +11,21 @@ const CategoryFields = (props: categoryFieldsPropTypes) => {
     props.arrayHelpers.push({name, type});
   }
 
-  function renderField({item}: {item: categoryFieldPropTypes}) {
-    return <AddedField name={item.name} type={item.type} />;
+  function renderField({
+    item,
+    index,
+  }: {
+    item: categoryFieldPropTypes;
+    index: number;
+  }) {
+    return (
+      <AddedField
+        index={index}
+        name={item.name}
+        type={item.type}
+        arrayHelpers={props.arrayHelpers}
+      />
+    );
   }
 
   function fieldKeyExtractor(item: categoryFieldPropTypes) {
