@@ -24,6 +24,7 @@ export default StyleSheet.create({
     ...textWeight.bold,
     color: colors.gunMetal,
     marginBottom: margins.textVertical,
+    textAlign: 'center',
   },
   addButton: {
     marginLeft: margins.pageHorizontal,
