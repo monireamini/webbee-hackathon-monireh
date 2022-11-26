@@ -11,3 +11,23 @@ export function addCategory({
     payload: {title, fields, titleField},
   };
 }
+
+export function deleteCategory({id}: {id: string}) {
+  return {
+    type: types.DELETE_CATEGORY,
+    payload: {id},
+  };
+}
+
+export function updateCategory({
+  id,
+  data,
+}: {
+  id: string;
+  data: createCategoryFormValues;
+}) {
+  return {
+    type: types.UPDATE_CATEGORY,
+    payload: {id, data},
+  };
+}

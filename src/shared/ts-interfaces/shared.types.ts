@@ -4,5 +4,7 @@ export interface reduxStore {
 
 export interface reduxAction {
   type: string;
-  payload: object;
+  payload: {
+    id?: string;
+  };
 }

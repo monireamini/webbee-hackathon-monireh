@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, margins} from '../../../shared/styles/styles';
+import {center, colors, margins} from '../../../shared/styles/styles';
 
 export default StyleSheet.create({
   mainContainer: {
@@ -14,5 +14,6 @@ export default StyleSheet.create({
   },
   submitButtonContainer: {
     paddingHorizontal: margins.formVertical,
+    ...center,
   },
 });

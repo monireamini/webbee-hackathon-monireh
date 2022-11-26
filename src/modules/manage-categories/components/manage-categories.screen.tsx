@@ -6,7 +6,10 @@ import CustomButton from '../../../shared/components/button/button';
 import styles from './manage-categories.screen.styles';
 import Layout from '../../../shared/components/layout/layout';
 import {manageCategoriesPropTypes} from './manage-categories.screen.types';
-import {createCategoryFormValues} from '../../create-category/components/create-category.screen.types';
+import {
+  categoryInReduxStore,
+  createCategoryFormValues
+} from '../../create-category/components/create-category.screen.types';
 import CategoryInManageMode from './category-in-manage-mode';
 
 const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
@@ -27,9 +30,14 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
     );
   }
 
-  function renderCategoryInEditMode({item}: {item: createCategoryFormValues}) {
+  function renderCategoryInEditMode({
+    item,
+  }: {
+    item: categoryInReduxStore;
+  }) {
     return (
       <CategoryInManageMode
+        id={item.id}
         title={item.title}
         fields={item.fields}
         titleField={item.titleField}
