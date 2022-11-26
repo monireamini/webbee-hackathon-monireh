@@ -16,9 +16,11 @@ const FieldInput = (props: inputPropTypes) => {
   }
 
   function handleAdd() {
-    props.handleAddField({name, type});
-    setName('');
-    setType('');
+    if (name && type) {
+      props.handleAddField({name, type});
+      setName('');
+      setType('');
+    }
   }
 
   return (

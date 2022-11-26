@@ -1,17 +1,33 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import CustomButton from '../../../shared/components/button/button';
 import styles from './manage-categories.screen.styles';
 import Layout from '../../../shared/components/layout/layout';
 import {manageCategoriesPropTypes} from './manage-categories.screen.types';
+import {createCategoryFormValues} from '../../create-category/components/create-category.screen.types';
+import CategoryInManageMode from './category-in-manage-mode';
 
 const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   function handleNavigateToAddCategory() {
     props.navigation.push('CreateCategory');
+  }
+
+  function renderCategoryInEditMode({item}: {item: createCategoryFormValues}) {
+    return (
+      <CategoryInManageMode
+        title={item.title}
+        fields={item.fields}
+        titleField={item.titleField}
+      />
+    );
+  }
+
+  function categoryKeyExtractor(item: createCategoryFormValues) {
+    return item.title;
   }
 
   return (
@@ -28,7 +44,11 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
           />
         </View>
       ) : (
-        <View />
+        <FlatList
+          data={categories}
+          renderItem={renderCategoryInEditMode}
+          keyExtractor={categoryKeyExtractor}
+        />
       )}
     </Layout>
   );

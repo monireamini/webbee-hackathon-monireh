@@ -1,33 +1,24 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {createCategoryFormValues} from '../../create-category/components/create-category.screen.types';
 import {ArrayHelpers, FieldArray, Formik} from 'formik';
-import Layout from '../../../shared/components/layout/layout';
+import CategoryFields from '../../create-category/components/category-fields';
+import {ScrollView, View} from 'react-native';
+import styles from './categroy-in-manage-mode.styles';
 import CustomTextInput from '../../../shared/components/text-input/text-input';
-import styles from './create-category.screen.styles';
 import Separator from '../../../shared/components/form-item-separator/separator';
-import CategoryFields from './category-fields';
 import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
-import {useDispatch} from 'react-redux';
-import {addCategory} from '../redux/actions';
-import {
-  createCategoriesPropTypes,
-  createCategoryFormValues,
-} from './create-category.screen.types';
 
-const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
-  const dispatch = useDispatch();
+const CategoryInManageMode = (props: createCategoryFormValues) => {
+  const initialValues = {...props};
 
-  const initialValues = {title: '', fields: [], titleField: ''}; // todo: get initial values from async storage or redux persist
-
-  function handleAddCategory(values: createCategoryFormValues) {
-    dispatch(addCategory(values));
-    navigation.goBack();
+  function handleUpdateCategory() {
+    //
   }
 
   return (
-    <Layout>
-      <Formik initialValues={initialValues} onSubmit={handleAddCategory}>
+    <View style={styles.mainContainer}>
+      <Formik initialValues={initialValues} onSubmit={handleUpdateCategory}>
         {({values, setFieldValue, handleSubmit}) => {
           function setTitle(text: string) {
             setFieldValue('title', text);
@@ -66,7 +57,7 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
                 <CustomButton
                   onPress={handleSetTitleField}
                   label={`Title Field is: ${values.titleField || ''}`}
-                  backgroundColor={colors.gunMetal}
+                  backgroundColor={colors.beauBlue}
                 />
               </View>
 
@@ -82,8 +73,8 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
           );
         }}
       </Formik>
-    </Layout>
+    </View>
   );
 };
 
-export default CreateCategoryScreen;
+export default CategoryInManageMode;
