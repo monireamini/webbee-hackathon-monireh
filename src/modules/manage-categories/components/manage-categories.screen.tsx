@@ -5,12 +5,13 @@ import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import CustomButton from '../../../shared/components/button/button';
 import styles from './manage-categories.screen.styles';
+import {manageCategoriesPropTypes} from './manage-categories.screen.types';
 
-const ManageCategoriesScreen = () => {
+const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   function handleNavigateToAddCategory() {
-    //
+    props.navigation.push('CreateCategory');
   }
 
   return (

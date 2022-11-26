@@ -1,4 +1,6 @@
+import {GestureResponderEvent} from 'react-native';
+
 export interface buttonPropTypes {
-  onPress: Function;
+  onPress: (event: GestureResponderEvent) => void;
   label: string;
 }
