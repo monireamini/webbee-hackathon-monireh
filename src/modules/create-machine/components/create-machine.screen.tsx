@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {FlatList, View} from 'react-native';
 import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import Layout from '../../../shared/components/layout/layout';
 import {Formik} from 'formik';
@@ -11,24 +11,28 @@ import DynamicField from './dynamic-field';
 import styles from './create-machine.screen.styles';
 import CustomButton from '../../../shared/components/button/button';
 import Separator from '../../../shared/components/form-item-separator/separator';
+import {addMachine} from '../redux/actions';
 
 // @ts-ignore
-const CreateMachineScreen = ({route}) => {
-  const fields =
-    useSelector((state: reduxStore) => state.categories).find(
-      (item: categoryInReduxStore) => item.id === route.params.categoryId,
-      // @ts-ignore
-    )?.fields || [];
+const CreateMachineScreen = ({route, navigation}) => {
+  const dispatch = useDispatch();
 
-  const initialValues = useMemo(() => {
-    return generateInitValues(fields);
-  }, [route.params.categoryId]);
+  const category = useSelector((state: reduxStore) => state.categories).find(
+    (item: categoryInReduxStore) => item.id === route.params.categoryId,
+  );
 
-  console.log('initialValues: ', initialValues);
+  const fields = useMemo(() => {
+    // @ts-ignore
+    return category?.fields || [];
+    // @ts-ignore
+  }, [category?.fields]);
 
-  function handleAddMachine() {
-    // dispatch(addCategory(values));
-    // navigation.goBack();
+  const initialValues = generateInitValues(fields);
+
+  function handleAddMachine(values: {}) {
+    // @ts-ignore
+    dispatch(addMachine({...values, categoryId: category?.id}));
+    navigation.goBack();
   }
 
   function fieldKeyExtractor(item: categoryFieldPropTypes) {
@@ -39,8 +43,6 @@ const CreateMachineScreen = ({route}) => {
     <Layout>
       <Formik initialValues={initialValues} onSubmit={handleAddMachine}>
         {({values, handleSubmit, setFieldValue}) => {
-          console.log('values: ', values);
-
           function renderField({item}: {item: categoryFieldPropTypes}) {
             return (
               <DynamicField

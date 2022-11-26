@@ -3,7 +3,7 @@ import {reduxAction} from '../../../shared/ts-interfaces/shared.types';
 import {uniqueId} from '../../../shared/utils/uuid';
 import {machineInReduxStore} from '../components/create-machine.screen.types';
 
-const categories = (state = [], action: reduxAction) => {
+const machines = (state = [], action: reduxAction) => {
   switch (action.type) {
     case types.ADD_MACHINE:
       return [{id: uniqueId(), ...action.payload}, ...state];
@@ -27,4 +27,4 @@ const categories = (state = [], action: reduxAction) => {
   }
 };
 
-export default categories;
+export default machines;
