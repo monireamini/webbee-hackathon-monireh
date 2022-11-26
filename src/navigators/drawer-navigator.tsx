@@ -16,11 +16,7 @@ const DrawerNavigator = () => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   return (
-    <Drawer.Navigator
-      initialRouteName="Dashboard"
-      screenOptions={{
-        drawerType: dimensions.windowWidth >= 768 ? 'permanent' : 'front',
-      }}>
+    <Drawer.Navigator initialRouteName="Dashboard">
       <Drawer.Screen name="Dashboard" component={Dashboard} />
 
       {/* dynamic routes */}

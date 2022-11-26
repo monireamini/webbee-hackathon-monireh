@@ -29,7 +29,7 @@ const DynamicField = (
 
   if (props.type === fieldTypeEnum.NUMBER) {
     function handleChangeNumber(txt: string) {
-      props.setFieldValue([props.name], parseInt(txt, 10));
+      props.setFieldValue([props.name], txt);
     }
 
     return (
