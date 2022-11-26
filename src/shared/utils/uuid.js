@@ -1,5 +1,10 @@
 import {v4 as uuidv4} from 'uuid';
+import moment from 'moment';
 
 export function uniqueId() {
-  return uuidv4();
+  try {
+    return uuidv4();
+  } catch {
+    return moment().unix();
+  }
 }

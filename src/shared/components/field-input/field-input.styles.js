@@ -11,7 +11,7 @@ export default StyleSheet.create({
   mainRow: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    width: dimensions.windowWidth - margins.pageHorizontal,
+    paddingRight: margins.pageHorizontal,
   },
   container: {
     flex: 2,
@@ -60,7 +60,7 @@ export default StyleSheet.create({
   },
 
   submitButtonContainer: {
-    marginLeft: margins.pageHorizontal,
+    marginHorizontal: margins.pageHorizontal,
     marginTop: 12,
   },
 });

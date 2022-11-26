@@ -40,6 +40,7 @@ const CategoryFields = (props: categoryFieldsPropTypes) => {
         renderItem={renderField}
         keyExtractor={fieldKeyExtractor}
         style={styles.fieldsListContainer}
+        scrollEnabled={false}
       />
 
       <Separator />

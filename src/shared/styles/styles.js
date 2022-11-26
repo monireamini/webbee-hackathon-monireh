@@ -12,8 +12,8 @@ export const colors = {
 };
 
 export const dimensions = {
-  windowWidth: Dimensions.get('window').width,
-  windowHeight: Dimensions.get('window').height,
+  windowWidth: Dimensions.get('screen').width,
+  windowHeight: Dimensions.get('screen').height,
 };
 
 export const textSize = {
@@ -27,19 +27,7 @@ export const textWeight = {
   bold: {fontWeight: 'bold'},
 };
 
-export const boldText = {
-  fontSize: 14,
-  fontWeight: 'bold',
-  color: colors.xanadu,
-};
-
 export const center = {
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-
-export const rowCenter = {
-  flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
 };

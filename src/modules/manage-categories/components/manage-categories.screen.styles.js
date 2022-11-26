@@ -27,7 +27,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   addButton: {
-    marginLeft: margins.pageHorizontal,
+    marginHorizontal: margins.pageHorizontal,
     marginTop: 12,
   },
   title: {
