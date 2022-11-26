@@ -1,5 +1,6 @@
 export interface reduxStore {
   categories: [];
+  machines: [];
 }
 
 export interface reduxAction {

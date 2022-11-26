@@ -34,7 +34,7 @@ const DynamicField = (
 
     return (
       <CustomInput
-        value={props.value}
+        value={props.value?.toString()}
         placeholder={props.name}
         keyboardType={'numeric'}
         onChangeText={handleChangeNumber}

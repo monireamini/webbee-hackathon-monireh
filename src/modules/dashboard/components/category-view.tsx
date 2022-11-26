@@ -1,18 +1,31 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
 import styles from './category-view.styles';
 import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
+import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
+import MachineInManageMode from './machine-in-manage-mode';
 
 const CategoryView = (
   props: categoryInReduxStore & {navigation: {navigate: Function}},
 ) => {
+  const machines = useSelector((state: reduxStore) => state.machines).filter(
+    (machine: {categoryId: string}) => machine.categoryId === props.id,
+  );
+
   function handleNavigateToAddMachine() {
     props.navigation.navigate('CreateMachine', {categoryId: props.id});
   }
 
-  const machines = [];
+  function renderMachineInEditMode({item}: {item: {id: string}}) {
+    return <MachineInManageMode id={item.id} />;
+  }
+
+  function machineKeyExtractor(item: {id: string}) {
+    return item.id;
+  }
 
   return (
     <View style={styles.categoryContainer}>
@@ -34,7 +47,11 @@ const CategoryView = (
           </Text>
         </View>
       ) : (
-        <></>
+        <FlatList
+          data={machines}
+          renderItem={renderMachineInEditMode}
+          keyExtractor={machineKeyExtractor}
+        />
       )}
     </View>
   );

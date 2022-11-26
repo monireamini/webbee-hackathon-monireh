@@ -4,5 +4,5 @@ export interface buttonPropTypes {
   onPress: (event: GestureResponderEvent) => void;
   label: string;
   backgroundColor?: string;
-  width?: string;
+  width?: string | number;
 }

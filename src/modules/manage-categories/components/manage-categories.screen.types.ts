@@ -1,3 +1,3 @@
 export interface manageCategoriesPropTypes {
-  navigation: {push: Function};
+  navigation: {navigate: Function};
 }

@@ -6,17 +6,14 @@ import CustomButton from '../../../shared/components/button/button';
 import styles from './manage-categories.screen.styles';
 import Layout from '../../../shared/components/layout/layout';
 import {manageCategoriesPropTypes} from './manage-categories.screen.types';
-import {
-  categoryInReduxStore,
-  createCategoryFormValues,
-} from '../../create-category/components/create-category.screen.types';
+import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
 import CategoryInManageMode from './category-in-manage-mode';
 
 const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   function handleNavigateToAddCategory() {
-    props.navigation.push('CreateCategory');
+    props.navigation.navigate('CreateCategory');
   }
 
   function renderAddButton() {
@@ -41,8 +38,8 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
     );
   }
 
-  function categoryKeyExtractor(item: createCategoryFormValues) {
-    return item.title;
+  function categoryKeyExtractor(item: categoryInReduxStore) {
+    return item.id;
   }
 
   return (

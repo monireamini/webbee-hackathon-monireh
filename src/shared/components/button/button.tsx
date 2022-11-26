@@ -15,8 +15,7 @@ const CustomButton = (props: buttonPropTypes) => {
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.container, {backgroundColor, width}]}
-    >
+      style={[styles.container, {backgroundColor, width}]}>
       <Text style={styles.label}>{label}</Text>
     </Pressable>
   );

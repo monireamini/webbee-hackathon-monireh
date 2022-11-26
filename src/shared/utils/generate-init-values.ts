@@ -8,7 +8,7 @@ export function generateInitValues(fields: categoryFieldPropTypes[]) {
     if (type === fieldTypeEnum.TEXT) {
       Object.assign(initValues, {[name]: ''});
     } else if (type === fieldTypeEnum.NUMBER) {
-      Object.assign(initValues, {[name]: 0});
+      Object.assign(initValues, {[name]: ''});
     } else if (type === fieldTypeEnum.DATE) {
       Object.assign(initValues, {[name]: ''});
     } else if (type === fieldTypeEnum.CHECKBOX) {
