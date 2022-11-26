@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import categories from '../modules/manage-categories/redux/reducers';
+import categories from '../modules/create-category/redux/reducers';
 
 const reducer = combineReducers({
   categories,

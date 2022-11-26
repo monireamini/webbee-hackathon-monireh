@@ -31,7 +31,7 @@ const FieldInput = (props: inputPropTypes) => {
           </View>
           <TextInput
             value={name}
-            placeholder={'Category Name'}
+            placeholder={'Enter Field Name'}
             onChangeText={setName}
             style={styles.input}
             placeholderTextColor={colors.morningBlue}
@@ -47,7 +47,7 @@ const FieldInput = (props: inputPropTypes) => {
             style={styles.typeContainer}
             onPress={handleShowSelectTypeModal}>
             <Text style={type ? styles.typeTextBlack : styles.typeText}>
-              {type || 'Field Type'}
+              {type || 'Select Field Type'}
             </Text>
           </Pressable>
         </View>

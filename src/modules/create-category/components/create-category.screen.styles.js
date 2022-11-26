@@ -5,4 +5,7 @@ export default StyleSheet.create({
   container: {
     paddingVertical: margins.formVertical,
   },
+  submitButtonContainer: {
+    paddingHorizontal: margins.formVertical,
+  },
 });

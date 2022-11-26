@@ -1,9 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
-import separatorStyles from './separator.styles';
+import styles from './separator.styles';
 
-const Separator = () => {
-  return <View style={separatorStyles.container} />;
+const Separator = (props: {half?: boolean}) => {
+  return <View style={props.half ? styles.halfContainer : styles.container} />;
 };
 
 export default Separator;
