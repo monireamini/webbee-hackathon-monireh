@@ -6,7 +6,7 @@ import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import {createCategoryFormValues} from '../../create-category/components/create-category.screen.types';
 import CategoryView from './category-view';
 
-const DashboardScreen = () => {
+const DashboardScreen = ({navigation}: {navigation: {push: Function}}) => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   function renderCategory({item}: {item: createCategoryFormValues}) {
@@ -15,6 +15,7 @@ const DashboardScreen = () => {
         title={item.title}
         fields={item.fields}
         titleField={item.titleField}
+        navigation={navigation}
       />
     );
   }

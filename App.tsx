@@ -18,6 +18,7 @@ import {persistor, store} from './src/redux/store';
 import Dashboard from './src/modules/dashboard/components/dashboard.screen';
 import ManageCategories from './src/modules/manage-categories/components/manage-categories.screen';
 import CreateCategory from './src/modules/create-category/components/create-category.screen';
+import CreateMachine from './src/modules/create-machine/create-machine.screen';
 
 const Stack = createStackNavigator();
 
@@ -26,13 +27,14 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Dashboard">
+          <Stack.Navigator initialRouteName="ManageCategories">
             <Stack.Screen name="Dashboard" component={Dashboard} />
             <Stack.Screen
               name="ManageCategories"
               component={ManageCategories}
             />
             <Stack.Screen name="CreateCategory" component={CreateCategory} />
+            <Stack.Screen name="CreateMachine" component={CreateMachine} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
