@@ -1,9 +1,10 @@
 import React from 'react';
-import {Modal, View} from 'react-native';
+import {Modal, Platform, View} from 'react-native';
 // @ts-ignore
-import DatePicker from 'react-native-modern-datepicker';
+import Calendar from 'react-native-calendar-datepicker';
 import styles from './date-picker-modal.styles';
 import {colors} from '../../styles/styles';
+import moment, {Moment} from 'moment';
 
 const DatePickerModal = ({
   modalVisible,
@@ -14,26 +15,27 @@ const DatePickerModal = ({
   setModalVisible: Function;
   setDate: Function;
 }) => {
-  function handleSetDate(date: string) {
-    setDate(date);
+  function handleSetDate(date: Moment) {
+    const dateString = moment(date).format('YYYY/MM/DD');
+    setDate(dateString);
     setModalVisible(false);
   }
 
   return (
     <Modal visible={modalVisible} transparent>
       <View style={styles.modalContainer}>
-        <DatePicker
-          options={{
-            backgroundColor: colors.champagne,
-            textHeaderColor: colors.gunMetal,
-            textDefaultColor: colors.gunMetal,
-            selectedTextColor: colors.white,
-            mainColor: colors.gunMetal,
-            textSecondaryColor: colors.morningBlue,
-          }}
-          onSelectedChange={handleSetDate}
-          mode="calendar"
-        />
+        <View style={styles.modalContent}>
+          <Calendar
+            onChange={handleSetDate}
+            minDate={moment().startOf('day')}
+            maxDate={moment().add(10, 'years').startOf('day')}
+            barText={{color: colors.gunMetal}}
+            dayText={{color: colors.gunMetal}}
+            dayDisabledText={{color: colors.gunMetal}}
+            dayHeaderText={{color: colors.gunMetal}}
+            dayView={{height: Platform.OS === 'android' ? 32 : undefined}}
+          />
+        </View>
       </View>
     </Modal>
   );

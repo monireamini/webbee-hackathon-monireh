@@ -12,6 +12,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: margins.pageHorizontal,
     borderRadius: 24,
+    height: 300,
   },
   modalTitle: {
     marginVertical: 24,
