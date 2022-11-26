@@ -33,8 +33,16 @@ const DrawerNavigator = () => {
         );
       })}
       <Drawer.Screen name="ManageCategories" component={ManageCategories} />
-      <Drawer.Screen name="CreateCategory" component={CreateCategory} />
-      <Drawer.Screen name="CreateMachine" component={CreateMachine} />
+      <Drawer.Screen
+        name="CreateCategory"
+        component={CreateCategory}
+        options={{drawerItemStyle: {height: 0}}}
+      />
+      <Drawer.Screen
+        name="CreateMachine"
+        component={CreateMachine}
+        options={{drawerItemStyle: {height: 0}}}
+      />
     </Drawer.Navigator>
   );
 };
