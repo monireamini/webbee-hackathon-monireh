@@ -16,6 +16,9 @@ export default StyleSheet.create({
   selectDateText: {
     color: colors.morningBlue,
   },
+  selectDateTextBlack: {
+    color: colors.gunMetal,
+  },
 
   toggleButton: {
     height: 38,

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {TextInput, Text, View, Pressable, Modal} from 'react-native';
+import {TextInput, Text, View, Pressable} from 'react-native';
 import {inputPropTypes} from './field-input.types';
 import styles from './field-input.styles';
 import {colors} from '../../styles/styles';
-import fieldTypes from '../../../data/field-types';
 import CustomButton from '../button/button';
+import SelectFieldTypeModal from '../modals/select-field-type-modal';
 
 const FieldInput = (props: inputPropTypes) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -61,30 +61,11 @@ const FieldInput = (props: inputPropTypes) => {
       </View>
 
       {/* select type modal */}
-      <Modal visible={modalVisible} transparent>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>
-              Select one of the following data type:
-            </Text>
-            {fieldTypes.map((typeItem: string) => {
-              function handleSelectType() {
-                setModalVisible(false);
-                setType(typeItem);
-              }
-
-              return (
-                <Pressable
-                  key={typeItem}
-                  style={styles.typeButton}
-                  onPress={handleSelectType}>
-                  <Text>{typeItem}</Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </View>
-      </Modal>
+      <SelectFieldTypeModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        setType={setType}
+      />
     </>
   );
 };
