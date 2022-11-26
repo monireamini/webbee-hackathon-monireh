@@ -12,19 +12,23 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Dashboard from './src/modules/dashboard/dashboard.screen';
-import ManageCategories from './src/modules/manage-categories/manage-categories.screen';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
+import Dashboard from './src/modules/dashboard/components/dashboard.screen';
+import ManageCategories from './src/modules/manage-categories/components/manage-categories.screen';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="ManageCategories" component={ManageCategories} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="ManageCategories">
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="ManageCategories" component={ManageCategories} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
