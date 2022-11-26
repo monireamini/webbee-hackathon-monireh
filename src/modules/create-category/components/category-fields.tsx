@@ -5,6 +5,7 @@ import Separator from '../../../shared/components/form-item-separator/separator'
 import {categoryFieldsPropTypes} from './category-fields.types';
 import {categoryFieldPropTypes} from './category-field.types';
 import AddedField from './added-field';
+import styles from './category-fields.styles';
 
 const CategoryFields = (props: categoryFieldsPropTypes) => {
   function handleAddField({name, type}: {name: string; type: string}) {
@@ -38,6 +39,7 @@ const CategoryFields = (props: categoryFieldsPropTypes) => {
         data={props.fields}
         renderItem={renderField}
         keyExtractor={fieldKeyExtractor}
+        style={styles.fieldsListContainer}
       />
 
       <Separator />

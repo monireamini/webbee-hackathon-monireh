@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 import {ArrayHelpers, FieldArray, Formik} from 'formik';
 import * as yup from 'yup';
 import Layout from '../../../shared/components/layout/layout';
@@ -60,7 +60,7 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
 
           return (
             <>
-              <ScrollView contentContainerStyle={styles.container}>
+              <View style={styles.container}>
                 {/* title */}
                 <CustomTextInput
                   value={values.title}
@@ -76,7 +76,7 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
                 <ErrorMessage
                   text={typeof errors.fields === 'string' ? errors.fields : ''}
                 />
-              </ScrollView>
+              </View>
 
               <View style={styles.submitButtonContainer}>
                 <CustomButton

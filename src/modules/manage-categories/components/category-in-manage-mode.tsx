@@ -65,7 +65,7 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
 
           return (
             <>
-              <ScrollView contentContainerStyle={styles.container}>
+              <View style={styles.container}>
                 {/* title */}
                 <CustomTextInput
                   value={values.title}
@@ -81,7 +81,7 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
                 <ErrorMessage
                   text={typeof errors.fields === 'string' ? errors.fields : ''}
                 />
-              </ScrollView>
+              </View>
 
               <View style={styles.submitButtonContainer}>
                 <CustomButton
