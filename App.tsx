@@ -14,14 +14,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from './src/redux/store';
-import DrawerScreens from './src/navigators/drawer-screens';
+import DrawerNavigator from './src/navigators/drawer-navigator';
 
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <NavigationContainer>
-          <DrawerScreens />
+          <DrawerNavigator />
         </NavigationContainer>
       </PersistGate>
     </Provider>

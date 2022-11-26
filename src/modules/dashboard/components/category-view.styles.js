@@ -26,7 +26,6 @@ export default StyleSheet.create({
   },
 
   emptyPlaceholder: {
-    flex: 1,
     ...center,
     paddingHorizontal: margins.pageHorizontal,
     marginTop: 26,

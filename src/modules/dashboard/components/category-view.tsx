@@ -6,10 +6,10 @@ import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
 
 const CategoryView = (
-  props: createCategoryFormValues & {navigation: {push: Function}},
+  props: createCategoryFormValues & {navigation: {navigate: Function}},
 ) => {
   function handleNavigateToAddMachine() {
-    props.navigation.push('CreateMachine');
+    props.navigation.navigate('CreateMachine');
   }
 
   const machines = [];

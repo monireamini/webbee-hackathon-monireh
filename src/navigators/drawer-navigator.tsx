@@ -12,7 +12,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerScreens = () => {
+const DrawerNavigator = () => {
   const categories = useSelector((state: reduxStore) => state.categories);
 
   return (
@@ -39,4 +39,4 @@ const DrawerScreens = () => {
   );
 };
 
-export default DrawerScreens;
+export default DrawerNavigator;
