@@ -16,6 +16,7 @@ export default StyleSheet.create({
   modalTitle: {
     marginVertical: 24,
     ...textSize.smallSizeText,
+    color: colors.gunMetal,
   },
   typeButton: {
     paddingVertical: 12,
@@ -24,5 +25,8 @@ export default StyleSheet.create({
     ...center,
     backgroundColor: colors.beauBlue.concat('FF'),
     borderRadius: 8,
+  },
+  typeButtonText: {
+    color: colors.gunMetal,
   },
 });

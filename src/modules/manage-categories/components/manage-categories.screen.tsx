@@ -25,7 +25,7 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
         />
 
         <Text style={styles.title}>Existing Categories:</Text>
-        <Text>You can edit them right here.</Text>
+        <Text style={styles.smallText}>You can edit them right here.</Text>
       </View>
     );
   }
@@ -53,10 +53,12 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
           <Text style={styles.emptyPlaceholderDescription}>
             Add the first one by clicking on the below button!
           </Text>
-          <CustomButton
-            onPress={handleNavigateToAddCategory}
-            label={'Add a new Category'}
-          />
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              onPress={handleNavigateToAddCategory}
+              label={'Add a new Category'}
+            />
+          </View>
         </View>
       ) : (
         <FlatList

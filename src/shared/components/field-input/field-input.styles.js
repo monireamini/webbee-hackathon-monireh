@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {
   center,
   colors,
@@ -30,6 +30,8 @@ export default StyleSheet.create({
     borderColor: colors.morningBlue,
     borderRadius: 8,
     paddingHorizontal: 10,
+    paddingBottom: Platform.OS === 'android' ? 8 : 0,
+    color: colors.gunMetal,
   },
 
   typeMainContainer: {

@@ -32,7 +32,7 @@ const SelectFieldTypeModal = ({
                 key={field.name}
                 style={styles.typeButton}
                 onPress={handleSelectType}>
-                <Text>{field.name}</Text>
+                <Text style={styles.typeButtonText}>{field.name}</Text>
               </Pressable>
             );
           })}

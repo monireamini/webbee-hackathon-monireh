@@ -34,5 +34,12 @@ export default StyleSheet.create({
     ...textSize.bigSizeText,
     ...textWeight.bold,
     marginTop: 20,
+    color: colors.gunMetal,
+  },
+  smallText: {
+    color: colors.gunMetal,
+  },
+  buttonContainer: {
+    marginLeft: margins.pageHorizontal,
   },
 });

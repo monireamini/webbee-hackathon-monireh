@@ -9,7 +9,6 @@ export default StyleSheet.create({
   },
   modalContent: {
     backgroundColor: colors.champagne,
-    width: '90%',
     paddingHorizontal: 10,
     paddingVertical: margins.pageHorizontal,
     borderRadius: 24,

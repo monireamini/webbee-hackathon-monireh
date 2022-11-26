@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Text, View} from 'react-native';
+import {Modal, View} from 'react-native';
 // @ts-ignore
 import DatePicker from 'react-native-modern-datepicker';
 import styles from './date-picker-modal.styles';
