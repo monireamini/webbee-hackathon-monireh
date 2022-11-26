@@ -1,15 +1,21 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {Formik} from 'formik';
+import {FieldArray, Formik} from 'formik';
 import Layout from '../../../shared/components/layout/layout';
 import CustomTextInput from '../../../shared/components/text-input/text-input';
 import styles from './create-category.screen.styles';
+import Separator from '../../../shared/components/form-item-separator/separator';
+import CategoryFields from './category-fields';
 
 const CreateCategoryScreen = () => {
   const initialValues = {title: '', fields: []}; // todo: get initial values from async storage or redux persist
 
   function handleAddCategory() {
-    //
+    // todo: add category to the redux store
+  }
+
+  function renderCategoryFields() {
+    return <CategoryFields />;
   }
 
   return (
@@ -29,7 +35,10 @@ const CreateCategoryScreen = () => {
                 onChangeText={setTitle}
               />
 
+              <Separator />
+
               {/* fields */}
+              <FieldArray name="fields" render={renderCategoryFields} />
             </ScrollView>
           );
         }}
