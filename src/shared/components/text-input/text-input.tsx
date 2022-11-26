@@ -2,6 +2,7 @@ import React from 'react';
 import {TextInput, Text, View} from 'react-native';
 import {inputPropTypes} from './text-input.types';
 import styles from './text-input.styles';
+import {colors} from '../../styles/styles';
 
 const CustomInput = (props: inputPropTypes) => {
   const {value, placeholder, onChangeText, keyboardType = 'default'} = props;
@@ -17,6 +18,7 @@ const CustomInput = (props: inputPropTypes) => {
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         style={styles.input}
+        placeholderTextColor={colors.morningBlue}
       />
     </View>
   );

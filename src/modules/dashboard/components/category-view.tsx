@@ -1,15 +1,15 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {createCategoryFormValues} from '../../create-category/components/create-category.screen.types';
+import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
 import styles from './category-view.styles';
 import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
 
 const CategoryView = (
-  props: createCategoryFormValues & {navigation: {navigate: Function}},
+  props: categoryInReduxStore & {navigation: {navigate: Function}},
 ) => {
   function handleNavigateToAddMachine() {
-    props.navigation.navigate('CreateMachine');
+    props.navigation.navigate('CreateMachine', {categoryId: props.id});
   }
 
   const machines = [];

@@ -8,6 +8,7 @@ export const colors = {
   beauBlue: '#BFD7EA',
   white: '#FFF',
   error: '#FE5656',
+  disabled: '#C2C2C2',
 };
 
 export const dimensions = {

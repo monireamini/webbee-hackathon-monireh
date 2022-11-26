@@ -28,6 +28,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "toggle-switch-react-native": "^3.3.0",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },

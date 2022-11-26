@@ -8,14 +8,15 @@ import {categoryInReduxStore} from '../create-category/components/create-categor
 const FilteredCategory = ({route, navigation}) => {
   let category: categoryInReduxStore;
 
-  const categoryItemInRedux = useSelector((state: reduxStore) => state.categories).find(
-    (item: categoryInReduxStore) => item.id === route.params.id,
-  );
+  const categoryItemInRedux = useSelector(
+    (state: reduxStore) => state.categories,
+  ).find((item: categoryInReduxStore) => item.id === route.params.id);
 
   if (categoryItemInRedux) {
     category = categoryItemInRedux;
     return (
       <CategoryView
+        id={category.id}
         title={category.title}
         fields={category.fields}
         titleField={category.titleField}

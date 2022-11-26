@@ -14,8 +14,9 @@ export default StyleSheet.create({
   },
   input: {
     height: 36,
-    borderWidth: 0,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     borderColor: colors.morningBlue,
+    borderRadius: 8,
+    paddingHorizontal: 8,
   },
 });
