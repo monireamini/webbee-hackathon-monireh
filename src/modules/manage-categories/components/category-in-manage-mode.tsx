@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, View} from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {ArrayHelpers, FieldArray, Formik} from 'formik';
 import * as yup from 'yup';
@@ -19,9 +19,12 @@ import {
   deleteCategory,
   updateCategory,
 } from '../../create-category/redux/actions';
+import SelectTitleFieldModal from '../../../shared/components/modals/select-title-field-modal';
 
 const CategoryInManageMode = (props: categoryInReduxStore) => {
   const dispatch = useDispatch();
+
+  const [titleFieldModalVisible, setTitleFieldModalVisible] = useState(false);
 
   const initialValues = {...props};
 
@@ -59,8 +62,13 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
             );
           }
 
-          function handleSetTitleField() {
-            // todo
+          function handleShowSelectTitleFieldModal() {
+            setTitleFieldModalVisible(true);
+          }
+
+          function handleSetTitleField(fieldName: string) {
+            setFieldValue('titleField', fieldName);
+            setTitleFieldModalVisible(false);
           }
 
           return (
@@ -85,13 +93,20 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
 
               <View style={styles.submitButtonContainer}>
                 <CustomButton
-                  onPress={handleSetTitleField}
+                  onPress={handleShowSelectTitleFieldModal}
                   label={
                     values.titleField
                       ? `Title Field is: ${values.titleField}`
                       : 'Click here to select the title field'
                   }
                   backgroundColor={colors.gunMetal}
+                />
+
+                <SelectTitleFieldModal
+                  modalVisible={titleFieldModalVisible}
+                  setModalVisible={setTitleFieldModalVisible}
+                  fields={values.fields}
+                  setTitleField={handleSetTitleField}
                 />
               </View>
 

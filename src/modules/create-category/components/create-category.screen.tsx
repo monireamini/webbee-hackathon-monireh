@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import {ArrayHelpers, FieldArray, Formik} from 'formik';
 import * as yup from 'yup';
@@ -17,9 +17,12 @@ import {
 } from './create-category.screen.types';
 import validations from '../../../shared/utils/validations';
 import ErrorMessage from '../../../shared/components/error-message/error-message';
+import SelectTitleFieldModal from '../../../shared/components/modals/select-title-field-modal';
 
 const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
   const dispatch = useDispatch();
+
+  const [titleFieldModalVisible, setTitleFieldModalVisible] = useState(false);
 
   const initialValues = {title: '', fields: [], titleField: ''}; // todo: get initial values from async storage or redux persist
 
@@ -54,8 +57,13 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
             );
           }
 
-          function handleSetTitleField() {
-            //
+          function handleShowSelectTitleFieldModal() {
+            setTitleFieldModalVisible(true);
+          }
+
+          function handleSetTitleField(fieldName: string) {
+            setFieldValue('titleField', fieldName);
+            setTitleFieldModalVisible(false);
           }
 
           return (
@@ -80,9 +88,16 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
 
               <View style={styles.submitButtonContainer}>
                 <CustomButton
-                  onPress={handleSetTitleField}
+                  onPress={handleShowSelectTitleFieldModal}
                   label={`Title Field is: ${values.titleField || ''}`}
                   backgroundColor={colors.gunMetal}
+                />
+
+                <SelectTitleFieldModal
+                  modalVisible={titleFieldModalVisible}
+                  setModalVisible={setTitleFieldModalVisible}
+                  fields={values.fields}
+                  setTitleField={handleSetTitleField}
                 />
               </View>
 

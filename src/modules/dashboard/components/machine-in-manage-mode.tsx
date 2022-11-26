@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Formik} from 'formik';
 import styles from '../../manage-categories/components/categroy-in-manage-mode.styles';
@@ -58,6 +58,14 @@ const MachineInManageMode = (props: {id: string}) => {
 
           return (
             <View style={styles.container}>
+              {/*@ts-ignore*/}
+              {values?.[category.titleField] && (
+                <Text style={styles.machineTitle}>
+                  {/*@ts-ignore*/}
+                  {values?.[category.titleField]}
+                </Text>
+              )}
+
               <FlatList
                 data={category.fields}
                 renderItem={renderField}

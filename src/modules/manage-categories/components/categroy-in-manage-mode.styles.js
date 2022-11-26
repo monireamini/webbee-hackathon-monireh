@@ -1,5 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {center, colors, margins} from '../../../shared/styles/styles';
+import {
+  center,
+  colors,
+  margins,
+  textSize,
+  textWeight,
+} from '../../../shared/styles/styles';
 
 export default StyleSheet.create({
   mainContainer: {
@@ -11,6 +17,12 @@ export default StyleSheet.create({
   },
   container: {
     paddingVertical: margins.formVertical,
+  },
+  machineTitle: {
+    marginHorizontal: margins.pageHorizontal,
+    ...textSize.mediumSizeText,
+    ...textWeight.bold,
+    marginBottom: 12,
   },
   submitButtonContainer: {
     paddingHorizontal: margins.formVertical,
