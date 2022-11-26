@@ -29,4 +29,12 @@ export default StyleSheet.create({
   typeButtonText: {
     color: colors.gunMetal,
   },
+
+  closeButtonContainer: {
+    padding: 12,
+  },
+  closeButton: {
+    color: colors.gunMetal,
+    textAlign: 'center',
+  },
 });

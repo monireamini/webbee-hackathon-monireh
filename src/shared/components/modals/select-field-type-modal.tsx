@@ -12,6 +12,10 @@ const SelectFieldTypeModal = ({
   setModalVisible: Function;
   setType: Function;
 }) => {
+  function handleClose() {
+    setModalVisible(false);
+  }
+
   return (
     <Modal visible={modalVisible} transparent>
       <View style={styles.modalContainer}>
@@ -34,6 +38,10 @@ const SelectFieldTypeModal = ({
               </Pressable>
             );
           })}
+
+          <Pressable style={styles.closeButtonContainer} onPress={handleClose}>
+            <Text style={styles.closeButton}>Close</Text>
+          </Pressable>
         </View>
       </View>
     </Modal>
