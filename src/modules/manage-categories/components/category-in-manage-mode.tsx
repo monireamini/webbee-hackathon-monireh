@@ -5,7 +5,7 @@ import {ArrayHelpers, FieldArray, Formik} from 'formik';
 import * as yup from 'yup';
 import {
   categoryInReduxStore,
-  createCategoryFormValues
+  createCategoryFormValues,
 } from '../../create-category/components/create-category.screen.types';
 import CategoryFields from '../../create-category/components/category-fields';
 import styles from './categroy-in-manage-mode.styles';
@@ -15,11 +15,12 @@ import CustomButton from '../../../shared/components/button/button';
 import {colors} from '../../../shared/styles/styles';
 import validations from '../../../shared/utils/validations';
 import ErrorMessage from '../../../shared/components/error-message/error-message';
-import {deleteCategory} from '../../create-category/redux/actions';
+import {
+  deleteCategory,
+  updateCategory,
+} from '../../create-category/redux/actions';
 
-const CategoryInManageMode = (
-  props: categoryInReduxStore,
-) => {
+const CategoryInManageMode = (props: categoryInReduxStore) => {
   const dispatch = useDispatch();
 
   const initialValues = {...props};
@@ -30,8 +31,8 @@ const CategoryInManageMode = (
     titleField: validations.titleField,
   });
 
-  function handleUpdateCategory() {
-    //
+  function handleUpdateCategory(values: createCategoryFormValues) {
+    dispatch(updateCategory({id: props.id, data: values}));
   }
 
   function handleDeleteCategory() {

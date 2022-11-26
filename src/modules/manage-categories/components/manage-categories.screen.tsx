@@ -8,7 +8,7 @@ import Layout from '../../../shared/components/layout/layout';
 import {manageCategoriesPropTypes} from './manage-categories.screen.types';
 import {
   categoryInReduxStore,
-  createCategoryFormValues
+  createCategoryFormValues,
 } from '../../create-category/components/create-category.screen.types';
 import CategoryInManageMode from './category-in-manage-mode';
 
@@ -30,11 +30,7 @@ const ManageCategoriesScreen = (props: manageCategoriesPropTypes) => {
     );
   }
 
-  function renderCategoryInEditMode({
-    item,
-  }: {
-    item: categoryInReduxStore;
-  }) {
+  function renderCategoryInEditMode({item}: {item: categoryInReduxStore}) {
     return (
       <CategoryInManageMode
         id={item.id}

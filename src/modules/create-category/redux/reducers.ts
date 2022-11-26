@@ -15,6 +15,13 @@ const categories = (state = [], action: reduxAction) => {
         ),
       ];
 
+    case types.UPDATE_CATEGORY:
+      return [
+        ...state.map((category: categoryInReduxStore) =>
+          category.id === action.payload.id ? action.payload.data : category,
+        ),
+      ];
+
     default:
       return state;
   }
