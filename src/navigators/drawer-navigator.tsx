@@ -7,7 +7,7 @@ import {dimensions} from '../shared/styles/styles';
 import Dashboard from '../modules/dashboard/components/dashboard.screen';
 import ManageCategories from '../modules/manage-categories/components/manage-categories.screen';
 import CreateCategory from '../modules/create-category/components/create-category.screen';
-import CreateMachine from '../modules/create-machine/create-machine.screen';
+import CreateMachine from '../modules/create-machine/components/create-machine.screen';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();

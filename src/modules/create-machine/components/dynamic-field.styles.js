@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, margins} from '../../shared/styles/styles';
+import {colors, margins} from '../../../shared/styles/styles';
 
 export default StyleSheet.create({
   selectDateButton: {
