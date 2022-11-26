@@ -9,7 +9,10 @@ import styles from './category-fields.styles';
 
 const CategoryFields = (props: categoryFieldsPropTypes) => {
   function handleAddField({name, type}: {name: string; type: string}) {
-    props.arrayHelpers.push({name, type});
+    if (props.fields.findIndex(field => field.name === name) < 0) {
+      // avoid adding two fields with the same name
+      props.arrayHelpers.push({name, type});
+    }
   }
 
   function renderField({
