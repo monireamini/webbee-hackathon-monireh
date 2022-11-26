@@ -27,11 +27,11 @@ const DatePickerModal = ({
         <View style={styles.modalContent}>
           <Calendar
             onChange={handleSetDate}
-            minDate={moment().startOf('day')}
+            minDate={moment().subtract(2, 'months')}
             maxDate={moment().add(10, 'years').startOf('day')}
             barText={{color: colors.gunMetal}}
             dayText={{color: colors.gunMetal}}
-            dayDisabledText={{color: colors.gunMetal}}
+            dayDisabledText={{color: colors.disabled}}
             dayHeaderText={{color: colors.gunMetal}}
             dayView={{height: Platform.OS === 'android' ? 32 : undefined}}
           />
