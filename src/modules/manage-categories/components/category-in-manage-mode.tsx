@@ -25,6 +25,7 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
   const dispatch = useDispatch();
 
   const [titleFieldModalVisible, setTitleFieldModalVisible] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const initialValues = {...props};
 
@@ -36,6 +37,11 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
 
   function handleUpdateCategory(values: createCategoryFormValues) {
     dispatch(updateCategory({id: props.id, data: values}));
+
+    setSuccessMessageVisible(true);
+    setTimeout(() => {
+      setSuccessMessageVisible(false);
+    }, 2000);
   }
 
   function handleDeleteCategory() {
@@ -115,7 +121,9 @@ const CategoryInManageMode = (props: categoryInReduxStore) => {
               <View style={styles.submitButtonContainer}>
                 <CustomButton
                   onPress={handleSubmit}
-                  label={'Update Category'}
+                  label={`Update Category ${
+                    successMessageVisible ? ': DONE!' : ''
+                  }`}
                 />
               </View>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Formik} from 'formik';
@@ -13,6 +13,8 @@ import {colors, dimensions} from '../../../shared/styles/styles';
 
 const MachineInManageMode = (props: {id: string}) => {
   const dispatch = useDispatch();
+
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const machine =
     useSelector((state: reduxStore) => state.machines).find(
@@ -30,6 +32,11 @@ const MachineInManageMode = (props: {id: string}) => {
 
   function handleUpdateMachine(values: {}) {
     dispatch(updateMachine({id: props.id, data: values}));
+
+    setSuccessMessageVisible(true);
+    setTimeout(() => {
+      setSuccessMessageVisible(false);
+    }, 2000);
   }
 
   function handleDeleteMachine() {
@@ -78,7 +85,9 @@ const MachineInManageMode = (props: {id: string}) => {
               <View style={styles.submitButtonContainer}>
                 <CustomButton
                   onPress={handleSubmit}
-                  label={'Update Machine'}
+                  label={`Update Machine ${
+                    successMessageVisible ? ': DONE!' : ''
+                  }`}
                   width={dimensions.windowWidth - 86}
                 />
               </View>
