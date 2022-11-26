@@ -53,6 +53,11 @@ const DynamicField = (
 
     return (
       <>
+        <View style={styles.placeholder}>
+          {!!props.value && (
+            <Text style={styles.placeholderText}>{props.name}</Text>
+          )}
+        </View>
         <Pressable
           style={styles.selectDateButton}
           onPress={handleShowDatePicker}>

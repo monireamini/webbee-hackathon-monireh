@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors, margins} from '../../../shared/styles/styles';
+import {colors, margins, textWeight} from '../../../shared/styles/styles';
 
 export default StyleSheet.create({
   selectDateButton: {
@@ -8,7 +8,6 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderColor: colors.morningBlue,
     marginHorizontal: margins.pageHorizontal,
-    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'flex-start',
     paddingHorizontal: 8,
@@ -18,6 +17,15 @@ export default StyleSheet.create({
   },
   selectDateTextBlack: {
     color: colors.gunMetal,
+  },
+
+  placeholder: {
+    height: 20,
+    marginLeft: margins.pageHorizontal,
+  },
+  placeholderText: {
+    color: colors.morningBlue,
+    ...textWeight.bold,
   },
 
   toggleButton: {
