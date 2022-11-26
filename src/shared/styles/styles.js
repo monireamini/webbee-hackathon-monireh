@@ -7,6 +7,7 @@ export const colors = {
   grullo: '#BAA898',
   beauBlue: '#BFD7EA',
   white: '#FFF',
+  error: '#FE5656',
 };
 
 export const dimensions = {

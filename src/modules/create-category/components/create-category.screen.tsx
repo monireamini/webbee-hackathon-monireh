@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {FieldArray, Formik} from 'formik';
+import {ArrayHelpers, FieldArray, Formik} from 'formik';
 import Layout from '../../../shared/components/layout/layout';
 import CustomTextInput from '../../../shared/components/text-input/text-input';
 import styles from './create-category.screen.styles';
@@ -14,16 +14,21 @@ const CreateCategoryScreen = () => {
     // todo: add category to the redux store
   }
 
-  function renderCategoryFields() {
-    return <CategoryFields />;
-  }
-
   return (
     <Layout>
       <Formik initialValues={initialValues} onSubmit={handleAddCategory}>
         {({values, setFieldValue}) => {
           function setTitle(text: string) {
             setFieldValue('title', text);
+          }
+
+          function renderCategoryFields(arrayHelpers: ArrayHelpers) {
+            return (
+              <CategoryFields
+                fields={values.fields}
+                arrayHelpers={arrayHelpers}
+              />
+            );
           }
 
           return (

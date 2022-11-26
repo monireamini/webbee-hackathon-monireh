@@ -1,13 +1,21 @@
 import {StyleSheet} from 'react-native';
-import {center, colors, margins, textSize, textWeight} from '../../styles/styles';
+import {
+  center,
+  colors,
+  dimensions,
+  margins,
+  textSize,
+  textWeight,
+} from '../../styles/styles';
 
 export default StyleSheet.create({
   mainRow: {
     flexDirection: 'row',
     alignItems: 'flex-end',
+    width: dimensions.windowWidth - margins.pageHorizontal,
   },
   container: {
-    flex: 4,
+    flex: 2,
     marginLeft: margins.pageHorizontal,
   },
   placeholder: {
@@ -25,22 +33,36 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
 
+  typeMainContainer: {
+    flex: 1,
+    marginLeft: margins.pageHorizontal / 2,
+  },
   typeContainer: {
-    flex: 2,
     height: 36,
     borderWidth: 1,
     borderColor: colors.morningBlue,
     borderRadius: 8,
     ...center,
-    marginLeft: margins.pageHorizontal / 2,
   },
   typeText: {
     color: colors.morningBlue,
+  },
+  typeTextBlack: {
+    color: colors.gunMetal,
   },
 
   removeButtonContainer: {
     flex: 1,
     marginLeft: margins.pageHorizontal / 2,
+    height: 36,
+    ...center,
+    borderRadius: 8,
+    backgroundColor: colors.error,
+  },
+
+  submitButtonContainer: {
+    marginLeft: margins.pageHorizontal,
+    marginTop: 12,
   },
 
   modalContainer: {

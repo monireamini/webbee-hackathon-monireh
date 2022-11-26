@@ -4,14 +4,21 @@ import {inputPropTypes} from './field-input.types';
 import styles from './field-input.styles';
 import {colors} from '../../styles/styles';
 import fieldTypes from '../../../data/field-types';
+import CustomButton from '../button/button';
 
 const FieldInput = (props: inputPropTypes) => {
-  const {value, placeholder, onChangeText, keyboardType = 'default'} = props;
-
   const [modalVisible, setModalVisible] = useState(false);
+  const [name, setName] = useState('');
+  const [type, setType] = useState('');
 
   function handleShowSelectTypeModal() {
     setModalVisible(true);
+  }
+
+  function handleAdd() {
+    props.handleAddField({name, type});
+    setName('');
+    setType('');
   }
 
   return (
@@ -20,47 +27,56 @@ const FieldInput = (props: inputPropTypes) => {
         {/* field name */}
         <View style={styles.container}>
           <View style={styles.placeholder}>
-            {!!value && (
-              <Text style={styles.placeholderText}>{placeholder}</Text>
-            )}
+            {!!name && <Text style={styles.placeholderText}>Field Name</Text>}
           </View>
           <TextInput
-            value={value}
-            placeholder={placeholder}
-            onChangeText={onChangeText}
-            keyboardType={keyboardType}
+            value={name}
+            placeholder={'Category Name'}
+            onChangeText={setName}
             style={styles.input}
             placeholderTextColor={colors.morningBlue}
           />
         </View>
 
         {/* field type*/}
-        <Pressable
-          style={styles.typeContainer}
-          onPress={handleShowSelectTypeModal}>
-          <Text style={styles.typeText}>Field Type</Text>
-        </Pressable>
+        <View style={styles.typeMainContainer}>
+          <View style={styles.placeholder}>
+            {!!type && <Text style={styles.placeholderText}>Field Type</Text>}
+          </View>
+          <Pressable
+            style={styles.typeContainer}
+            onPress={handleShowSelectTypeModal}>
+            <Text style={type ? styles.typeTextBlack : styles.typeText}>
+              {type || 'Field Type'}
+            </Text>
+          </Pressable>
+        </View>
+      </View>
 
-        {/* remove button */}
-        <View style={styles.removeButtonContainer} />
+      {/* submit button */}
+      <View style={styles.submitButtonContainer}>
+        <CustomButton onPress={handleAdd} label={'Add Field'} />
       </View>
 
       {/* select type modal */}
-      <Modal visible={modalVisible} animationType={'slide'} transparent>
+      <Modal visible={modalVisible} transparent>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>
               Select one of the following data type:
             </Text>
-            {fieldTypes.map((type: string) => {
+            {fieldTypes.map((typeItem: string) => {
               function handleSelectType() {
                 setModalVisible(false);
-                // setFieldType(type);
+                setType(typeItem);
               }
 
               return (
-                <Pressable style={styles.typeButton} onPress={handleSelectType}>
-                  <Text>{type}</Text>
+                <Pressable
+                  key={typeItem}
+                  style={styles.typeButton}
+                  onPress={handleSelectType}>
+                  <Text>{typeItem}</Text>
                 </Pressable>
               );
             })}
