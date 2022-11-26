@@ -32,8 +32,12 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
     titleField: validations.titleField,
   });
 
-  function handleAddCategory(values: createCategoryFormValues) {
+  function handleAddCategory(
+    values: createCategoryFormValues,
+    {resetForm}: {resetForm: Function},
+  ) {
     dispatch(addCategory(values));
+    resetForm();
     navigation.goBack();
   }
 
@@ -43,7 +47,7 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleAddCategory}>
-        {({values, errors, setFieldValue, handleSubmit}) => {
+        {({values, errors, touched, setFieldValue, handleSubmit}) => {
           function setTitle(text: string) {
             setFieldValue('title', text);
           }
@@ -75,14 +79,20 @@ const CreateCategoryScreen = ({navigation}: createCategoriesPropTypes) => {
                   placeholder={'Category Name'}
                   onChangeText={setTitle}
                 />
-                <ErrorMessage text={errors.title || ''} />
+                <ErrorMessage text={touched.title ? errors.title || '' : ''} />
 
                 <Separator />
 
                 {/* fields */}
                 <FieldArray name="fields" render={renderCategoryFields} />
                 <ErrorMessage
-                  text={typeof errors.fields === 'string' ? errors.fields : ''}
+                  text={
+                    touched.fields
+                      ? typeof errors.fields === 'string'
+                        ? errors.fields
+                        : ''
+                      : ''
+                  }
                 />
               </View>
 

@@ -29,9 +29,10 @@ const CreateMachineScreen = ({route, navigation}) => {
 
   const initialValues = generateInitValues(fields);
 
-  function handleAddMachine(values: {}) {
+  function handleAddMachine(values: {}, {resetForm}: {resetForm: Function}) {
     // @ts-ignore
     dispatch(addMachine({...values, categoryId: category?.id}));
+    resetForm();
     navigation.goBack();
   }
 
