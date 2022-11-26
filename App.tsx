@@ -26,7 +26,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="ManageCategories">
+          <Stack.Navigator initialRouteName="Dashboard">
             <Stack.Screen name="Dashboard" component={Dashboard} />
             <Stack.Screen
               name="ManageCategories"
