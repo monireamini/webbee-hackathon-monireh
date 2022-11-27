@@ -42,4 +42,7 @@ export default StyleSheet.create({
     color: colors.gunMetal,
     marginBottom: margins.textVertical,
   },
+  listContainer: {
+    paddingBottom: 24,
+  },
 });

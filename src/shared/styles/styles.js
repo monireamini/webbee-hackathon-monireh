@@ -16,6 +16,8 @@ export const dimensions = {
   windowHeight: Dimensions.get('screen').height,
 };
 
+export const numColumns = dimensions.windowWidth < 460 ? 1 : 2;
+
 export const textSize = {
   smallSizeText: {fontSize: 14},
   mediumSizeText: {fontSize: 16},

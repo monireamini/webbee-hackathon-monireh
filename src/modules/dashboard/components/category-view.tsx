@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {categoryInReduxStore} from '../../create-category/components/create-category.screen.types';
 import styles from './category-view.styles';
 import CustomButton from '../../../shared/components/button/button';
-import {colors} from '../../../shared/styles/styles';
+import {colors, numColumns} from '../../../shared/styles/styles';
 import {reduxStore} from '../../../shared/ts-interfaces/shared.types';
 import MachineInManageMode from './machine-in-manage-mode';
 
@@ -48,9 +48,11 @@ const CategoryView = (
         </View>
       ) : (
         <FlatList
+          numColumns={numColumns}
           data={machines}
           renderItem={renderMachineInEditMode}
           keyExtractor={machineKeyExtractor}
+          contentContainerStyle={styles.listContainer}
         />
       )}
     </View>

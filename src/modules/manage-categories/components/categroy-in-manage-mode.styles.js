@@ -3,6 +3,7 @@ import {
   center,
   colors,
   margins,
+  numColumns,
   textSize,
   textWeight,
 } from '../../../shared/styles/styles';
@@ -14,6 +15,8 @@ export default StyleSheet.create({
     paddingBottom: 32,
     backgroundColor: colors.white,
     borderRadius: 20,
+    marginRight: numColumns === 2 ? 24 : 0,
+    width: numColumns === 2 ? '48%' : '100%',
   },
   container: {
     paddingVertical: margins.formVertical,
